@@ -1,0 +1,34 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 200px;
+    grid-gap: 1em;
+    justify-content: center;
+  }
+.card {
+    justify-content: center;
+}
+.body {
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+}
+h2 {
+    text-align: center;
+}
+main {
+    flex: 1 calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 20px;
+    margin: auto;
+}
+li {
+    margin-left: 10px;
+}
