@@ -7,3 +7,7 @@ simon html - ran sudo chmod 775 deployFiles.h to fix "permission denied"
 simon css - bootstrap containers pretty useful
           - rel = 'stylesheet' href = '___.css'
           - bootstrap link https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css
+startup html/css: 
+    -use img inside <a> tag to make it a link
+    -if right answer, -> same page; otherwise -> home
+    -grid layout
