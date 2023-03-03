@@ -11,3 +11,7 @@ startup html/css:
     -use img inside <a> tag to make it a link
     -if right answer, -> same page; otherwise -> home
     -grid layout
+simon javascript: 
+          - include the <script> element at bottom of body if it modifies html 
+          -keep track of ids of elements, thats main tool for making them interactive
+          -ie document.querySelector('#whatever')
