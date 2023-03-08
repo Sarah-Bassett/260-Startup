@@ -97,7 +97,7 @@ function choiceMade(num) {
 }
 
 function loadMain() {
-    const matches = document.querySelectorAll(".card");
+    const matches = document.querySelectorAll("div.card");
     const completeds = localStorage.getItem("completeds") 
     let i = 0;
 
@@ -107,6 +107,20 @@ function loadMain() {
             const array = eval(completeds.charAt(i))
             imageNode.src = array[0].image;
             element.appendChild(imageNode);
+            i++;
+        }
+    });
+
+    const toDos = document.querySelectorAll("button.card");
+    i = 0;
+    toDos.forEach(element => {
+        if (i < completeds.length) {
+            const array = eval(completeds.charAt(i))
+            const letter = array[0].letter;
+            if (completeds.includes(letter))  {
+                element.removeChild(element.firstElementChild);
+                element.onclick = function() {};
+            }
             i++;
         }
     });
