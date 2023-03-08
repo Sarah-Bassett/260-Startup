@@ -114,16 +114,14 @@ function loadMain() {
     const toDos = document.querySelectorAll("button.card");
     i = 0;
     toDos.forEach(element => {
-        if (i < completeds.length) {
-            const array = eval(completeds.charAt(i))
-            const letter = array[0].letter;
-            if (completeds.includes(letter))  {
-                element.removeChild(element.firstElementChild);
-                element.onclick = function() {};
-            }
-            i++;
+        const letter = allQuestions[i];
+        if (completeds.includes(letter))  {
+            element.removeChild(element.firstElementChild);
+            element.onclick = function() {};
         }
-    });
+        i++;
+        }
+    );
     
 
 }

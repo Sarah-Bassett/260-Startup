@@ -15,3 +15,7 @@ simon javascript:
           - include the <script> element at bottom of body if it modifies html 
           -keep track of ids of elements, thats main tool for making them interactive
           -ie document.querySelector('#whatever')
+startup java:
+    local storage is VERY helpful
+    eval() can take string-> variable
+    stringA.includes(stringB) can get substring
