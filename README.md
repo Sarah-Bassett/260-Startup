@@ -19,3 +19,9 @@ startup java:
     local storage is VERY helpful
     eval() can take string-> variable
     stringA.includes(stringB) can get substring
+
+simon service:
+    api calls should be async/await
+    still can use localstorage
+    node made database implementation pretty easy
+    .gitignore, but still shows 435 changes to be staged 
