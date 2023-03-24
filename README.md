@@ -25,3 +25,7 @@ simon service:
     still can use localstorage
     node made database implementation pretty easy
     .gitignore, but still shows 435 changes to be staged 
+          
+Simon DB:
+    when alter /etc/environment in ssh session, need to pm2 restart all --update-env, then pm2 save
+    database.js has functions to access database
