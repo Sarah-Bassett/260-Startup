@@ -29,3 +29,7 @@ simon service:
 Simon DB:
     when alter /etc/environment in ssh session, need to pm2 restart all --update-env, then pm2 save
     database.js has functions to access database
+          
+Simon login:
+          gets userName from local storage, if not empty awaits getUser (fetch from api) -> authenticated
+          authenticated? playcontrols: logincontrols (both seperate divs in index.html, conditionally visible
