@@ -33,3 +33,7 @@ Simon DB:
 Simon login:
           gets userName from local storage, if not empty awaits getUser (fetch from api) -> authenticated
           authenticated? playcontrols: logincontrols (both seperate divs in index.html, conditionally visible
+
+simon websocket: need peerProxy.js that creates new ws server, can upgrade stuff and track connections, kill ones that don't ping
+          index.js has const PeerProxy from require (./peerProxy.js)
+          class Game has socket attribute, configures WebSocket at beginning, can this.socket.send(string), wrote onopen, onclose, and onmessage events
