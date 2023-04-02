@@ -19,3 +19,21 @@ startup java:
     local storage is VERY helpful
     eval() can take string-> variable
     stringA.includes(stringB) can get substring
+
+simon service:
+    api calls should be async/await
+    still can use localstorage
+    node made database implementation pretty easy
+    .gitignore, but still shows 435 changes to be staged 
+          
+Simon DB:
+    when alter /etc/environment in ssh session, need to pm2 restart all --update-env, then pm2 save
+    database.js has functions to access database
+          
+Simon login:
+          gets userName from local storage, if not empty awaits getUser (fetch from api) -> authenticated
+          authenticated? playcontrols: logincontrols (both seperate divs in index.html, conditionally visible
+
+simon websocket: need peerProxy.js that creates new ws server, can upgrade stuff and track connections, kill ones that don't ping
+          index.js has const PeerProxy from require (./peerProxy.js)
+          class Game has socket attribute, configures WebSocket at beginning, can this.socket.send(string), wrote onopen, onclose, and onmessage events
