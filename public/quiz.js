@@ -93,7 +93,7 @@ function choiceMade(num) {
         }
 
     }
-    window.location.href = "index.html";
+    window.location.href = "home.html";
 }
 
 function loadMain() {

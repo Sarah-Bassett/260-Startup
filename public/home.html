@@ -1,61 +1,64 @@
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link rel="stylesheet" href="main.css"/>
-    <script src = "quiz.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    />
-  </head>
-<body onload = loadMain() class="bg-dark text-light">
-    <div class ="bg-light container-fluid navbar text-dark">
-        <h1 class="text-reset">Trivia Collection</h1>
-        <h2 class="text-reset">Sarah Bassett</h2>
-    </div>
-    <div>
-        <h2>My Shelf</h2>
-        <div class="container">
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home</title>
+        <link rel="stylesheet" href="main.css"/>
+        <script src = "quiz.js"></script>
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous"
+        />
+    </head>
+    <body onload = loadMain() class="bg-dark text-light">
+        <div class ="bg-light container-fluid navbar text-dark">
+            <h1 class="text-reset">Trivia Collection</h1>
+            <h2 class="text-reset">Sarah Bassett</h2>
         </div>
-    </div>
-    <div>
-        <h2>New Challenges</h2>
-        <div class="container">
-            <button class = "card" onclick = "quizPage(m)">
-                <img src = "https://upload.wikimedia.org/wikipedia/commons/e/e5/Plain-M%26Ms-Pile.jpg">
-            </button>
-            <button class = "card" onclick = "quizPage(a)">
-                <img src = "https://lmg-labmanager.s3.amazonaws.com/assets/articleNo/28511/aImg/51474/ant-neural-networks-compressed-m.webp">
-            </button>
-            <button class = "card" onclick = "quizPage(k)">
-                <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Parque_Eagle_River%2C_Anchorage%2C_Alaska%2C_Estados_Unidos%2C_2017-09-01%2C_DD_02.jpg/640px-Parque_Eagle_River%2C_Anchorage%2C_Alaska%2C_Estados_Unidos%2C_2017-09-01%2C_DD_02.jpg">
-            </button>
-            <button class = "card" onclick = "quizPage(s)">
-                <img src = "https://www.thesnowpros.org/wp-content/uploads/2020/03/cross-country_skate_greg-rhodes-scaled.jpg">
-            </button>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
+        <div>
+            <h2>My Shelf</h2>
+            <div class="container">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
         </div>
-    </div>
-    <footer class="bg-dark text-dark text-muted">
-        <div class = "container-fluid">
-        <span class="text-reset">Made by Sarah Bassett</span>
+        <div>
+            <h2>New Challenges</h2>
+            <div class="container">
+                <button class = "card" onclick = "quizPage(m)">
+                    <img src = "https://upload.wikimedia.org/wikipedia/commons/e/e5/Plain-M%26Ms-Pile.jpg">
+                </button>
+                <button class = "card" onclick = "quizPage(a)">
+                    <img src = "https://lmg-labmanager.s3.amazonaws.com/assets/articleNo/28511/aImg/51474/ant-neural-networks-compressed-m.webp">
+                </button>
+                <button class = "card" onclick = "quizPage(k)">
+                    <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Parque_Eagle_River%2C_Anchorage%2C_Alaska%2C_Estados_Unidos%2C_2017-09-01%2C_DD_02.jpg/640px-Parque_Eagle_River%2C_Anchorage%2C_Alaska%2C_Estados_Unidos%2C_2017-09-01%2C_DD_02.jpg">
+                </button>
+                <button class = "card" onclick = "quizPage(s)">
+                    <img src = "https://www.thesnowpros.org/wp-content/uploads/2020/03/cross-country_skate_greg-rhodes-scaled.jpg">
+                </button>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
         </div>
-    </footer>
-    
-</body>
+        <footer class="bg-dark text-dark text-muted">
+            <div class = "container-fluid">
+            <span class="text-reset">Made by Sarah Bassett</span>
+            </div>
+        </footer>
+        
+    </body>
+</html>
