@@ -14,10 +14,14 @@ const url = `mongodb+srv://${userName}:${password}@${hostname}`;
 
 const client = new MongoClient(url);
 const userCollection = client.db('quiz').collection('user');
-const scoreCollection = client.db('quiz').collection('score');
+const scoreCollection = client.db('quiz').collection('scores');
 
 function getUser(email) {
   return userCollection.findOne({ email: email });
+}
+
+function getScore(email) {
+  return scoreCollection.findOne({ email: email });
 }
 
 function getUserByToken(token) {
@@ -37,9 +41,8 @@ async function createUser(email, password) {
 
   return user;
 }
-
-function addScore(score) {
-  scoreCollection.insertOne(score);
+async function addScore(email, score) {
+  await scoreCollection.insertOne({email: email, score: score});
 }
 
 module.exports = {
@@ -47,4 +50,5 @@ module.exports = {
   getUserByToken,
   createUser,
   addScore,
+  getScore,
 };

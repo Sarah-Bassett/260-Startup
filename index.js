@@ -29,7 +29,22 @@ apiRouter.post('/auth/create', async (req, res) => {
     });
   }
 });
+apiRouter.post('/scores', async (req, res) => {
+  const user = await DB.addScore(req.body.email, req.body.score);
+  res.send({
+    email: req.body.email,
+    score: req.body.score
+  });
+});
 
+apiRouter.get('/scores/:email', async (req, res) => {
+  const user = await DB.getScore(req.params.email);
+  if (user) {
+    res.send({ email: user.email, score: score === user.score });
+    return;
+  }
+  res.status(404).send({ msg: 'Unknown' });
+});
 // GetAuth token for the provided credentials
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await DB.getUser(req.body.email);
@@ -59,6 +74,8 @@ apiRouter.get('/user/:email', async (req, res) => {
   }
   res.status(404).send({ msg: 'Unknown' });
 });
+
+
 
 // secureApiRouter verifies credentials for endpoints
 var secureApiRouter = express.Router();

@@ -1,21 +1,25 @@
 (async () => {
     let authenticated = false;
     const userName = localStorage.getItem('userName');
-    if (userName) {
+    if (userName != null) {
       const nameEl = document.querySelector('#userName');
-      nameEl.value = userName;
-      const user = await getUser(nameEl.value);
-      authenticated = user?.authenticated;
+      if (nameEl != null) {
+        nameEl.value = userName;
+        const user = await getUser(nameEl.value);
+        authenticated = user?.authenticated;
+        if (authenticated) {
+            document.querySelector('#playerName').textContent = userName;
+            setDisplay('loginControls', 'none');
+            setDisplay('playControls', 'block');
+          } else {
+            setDisplay('loginControls', 'block');
+            setDisplay('playControls', 'none');
+          }
+      }
+      
     }
   
-    if (authenticated) {
-      document.querySelector('#playerName').textContent = userName;
-      setDisplay('loginControls', 'none');
-      setDisplay('playControls', 'block');
-    } else {
-      setDisplay('loginControls', 'block');
-      setDisplay('playControls', 'none');
-    }
+    
   })();
   
   async function loginUser() {
@@ -53,7 +57,16 @@
     window.location.href = 'home.html';
   }
   
-  function logout() {
+  async function logout() {
+    let score = localStorage.getItem('completeds')
+    let userName = localStorage.getItem('userName');
+    const response = await fetch(`/api/scores`, {
+      method: 'post',
+      body: JSON.stringify({ email: userName, score: score }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
     fetch(`/api/auth/logout`, {
       method: 'delete',
     }).then(() => (window.location.href = '/'));
@@ -65,7 +78,6 @@
     if (response.status === 200) {
       return response.json();
     }
-  
     return null;
   }
   

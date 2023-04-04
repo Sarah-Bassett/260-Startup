@@ -28,6 +28,76 @@ const s = [{title: "XC Ski",
     letter: "s"}
 ]
 
+class Game {
+    socket;
+    constructor() {
+        this.configureWebSocket();
+    }
+
+    configureWebSocket() {
+        const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+        this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+        this.socket.onopen = (event) => {
+          this.displayMsg('system', 'game', 'connected');
+        };
+        this.socket.onclose = (event) => {
+          this.displayMsg('system', 'game', 'disconnected');
+        };
+        this.socket.onmessage = async (event) => {
+          const msg = JSON.parse(await event.data.text());
+          this.displayMsg('player', msg.from, `scored ${msg.value.score}`);
+        };
+    
+    }
+
+    broadcastEvent(from, type, value) {
+        const event = {
+          from: from,
+          type: type,
+          value: value,
+        };
+        this.socket.send(JSON.stringify(event));
+    }
+
+    displayMsg(cls, from, msg) {
+        const chatText = document.querySelector('#player-messages');
+        if (chatText != null) {
+            chatText.innerHTML =
+            `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+        }
+    }
+    choiceMade(num) {
+        var completeds; 
+        const ans = localStorage.getItem("ans");
+    
+        const array = JSON.parse(localStorage.getItem("questionNumber"));
+    
+        if (num.toString() === ans) {
+            completeds = localStorage.getItem("completeds");
+    
+            if(completeds == null) {
+                localStorage.setItem("completeds", "")
+            }
+    
+            const letter = array[0].letter;
+    
+            if(!completeds.includes(letter)) {
+                localStorage.setItem("completeds", completeds + letter);
+            }
+    
+            const event = {
+                from: 'test',
+                type: '10',
+            };
+    
+            this.socket.send(JSON.stringify(event)); 
+    
+    
+        }
+        window.location.href = "home.html";
+    };
+}
+
 function askAll(name) {
     const currtitle = document.querySelector('#title');
     currtitle.textContent = "array[0].title";
@@ -74,34 +144,44 @@ function askOne()  {
     
 }
 
-function choiceMade(num) {
-    ans = localStorage.getItem("ans");
+async function saveLetter(letter) {
+    const userName = localStorage.getItem('username')
+    try {
+        const pastLetters = await fetch('/api/score', {
+            method: 'GET', 
+            headers: {'content-type':'application/json'},
+        });
 
-    const array = JSON.parse(localStorage.getItem("questionNumber"));
+        //broadcast score
+        const allScores = pastLetters + letter;
+        localStorage.setItem("completeds", JSON.stringify(allSores));
 
-    if (num.toString() === ans) {
-        completeds = localStorage.getItem("completeds");
-
-        if(completeds == null) {
-            localStorage.setItem("completeds", "")
-        }
-
-        const letter = array[0].letter;
-
-        if(!completeds.includes(letter)) {
-            localStorage.setItem("completeds", completeds + letter);
-        }
-
+        const response = await fetch('/api/score', {
+            method: 'POST',
+            headers: {'content-type':'application/json'},
+            body: JSON.stringify(allScores),
+        });
+    } catch {
+       //nothing
     }
-    window.location.href = "home.html";
+    
 }
 
-function loadMain() {
+async function loadMain() {
     const matches = document.querySelectorAll("div.card");
-    const completeds = localStorage.getItem("completeds") 
+    var completeds;
+    try {
+        const response = await fetch('/api/score', {
+            method: 'GET',
+            headers: {'content-type':'application/json'},
+        });
+        completeds = await response.text();
+    } catch {
+        completeds = localStorage.getItem("completeds")
+    }
     let i = 0;
 
-    matches.forEach(element => {
+    /*matches.forEach(element => {
         if (i < completeds.length) {
             const imageNode = document.createElement('img');
             const array = eval(completeds.charAt(i))
@@ -121,7 +201,11 @@ function loadMain() {
         }
         i++;
         }
-    );
-    
+    )*/
+}
 
+const game = new Game();
+
+function choiceMade(num) {
+    game.choiceMade(num);
 }
