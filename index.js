@@ -30,7 +30,9 @@ apiRouter.post('/auth/create', async (req, res) => {
   }
 });
 apiRouter.post('/scores', async (req, res) => {
+  //hallelujah it works
   const user = await DB.addScore(req.body.email, req.body.score);
+  //idk what this bit does but it only worked when i added it
   res.send({
     email: req.body.email,
     score: req.body.score

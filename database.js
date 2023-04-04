@@ -42,6 +42,11 @@ async function createUser(email, password) {
   return user;
 }
 async function addScore(email, score) {
+  try {
+    scoreCollection.deleteOne({email: email})
+  } catch {
+    //pass
+  }
   await scoreCollection.insertOne({email: email, score: score});
   console.log('score added');
 }
