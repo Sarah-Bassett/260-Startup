@@ -43,6 +43,7 @@ async function createUser(email, password) {
 }
 async function addScore(email, score) {
   await scoreCollection.insertOne({email: email, score: score});
+  console.log('score added');
 }
 
 module.exports = {
