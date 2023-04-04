@@ -37,3 +37,5 @@ Simon login:
 simon websocket: need peerProxy.js that creates new ws server, can upgrade stuff and track connections, kill ones that don't ping
           index.js has const PeerProxy from require (./peerProxy.js)
           class Game has socket attribute, configures WebSocket at beginning, can this.socket.send(string), wrote onopen, onclose, and onmessage events
+          
+React CLI: super helpful to set up everything right, get packages, etc
