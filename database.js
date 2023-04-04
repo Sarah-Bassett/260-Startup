@@ -20,8 +20,10 @@ function getUser(email) {
   return userCollection.findOne({ email: email });
 }
 
-function getScore(email) {
-  return scoreCollection.findOne({ email: email });
+async function getScore(email) {
+  let obj = await scoreCollection.findOne({ email: email });
+  console.log(obj);
+  return obj;
 }
 
 function getUserByToken(token) {

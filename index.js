@@ -42,7 +42,7 @@ apiRouter.post('/scores', async (req, res) => {
 apiRouter.get('/scores/:email', async (req, res) => {
   const user = await DB.getScore(req.params.email);
   if (user) {
-    res.send({ email: user.email, score: score === user.score });
+    res.send({ email: user.email, score: user.score });
     return;
   }
   res.status(404).send({ msg: 'Unknown' });

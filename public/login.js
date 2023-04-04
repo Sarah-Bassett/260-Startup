@@ -23,11 +23,14 @@
   })();
   
   async function loginUser() {
+    data = await getScore(document.querySelector('#userName')?.value);
     loginOrCreate(`/api/auth/login`);
+    localStorage.setItem('completeds', data.score);
   }
   
   async function createUser() {
     loginOrCreate(`/api/auth/create`);
+    localStorage.setItem('completeds', '')
   }
   
   async function loginOrCreate(endpoint) {
@@ -58,7 +61,7 @@
   }
   
   async function logout() {
-    let score = localStorage.getItem('completeds')
+    let score = await localStorage.getItem('completeds')
     let userName = localStorage.getItem('userName');
     const response = await fetch(`/api/scores`, {
       method: 'post',
@@ -77,6 +80,16 @@
     const response = await fetch(`/api/user/${email}`);
     if (response.status === 200) {
       return response.json();
+    }
+    return null;
+  }
+
+  async function getScore(email) {
+    // See if we have a user with the given email.
+    let response = await fetch(`/api/scores/${email}`);
+    if (response.status === 200) {
+      response = await response.json();
+      return response;
     }
     return null;
   }
