@@ -1,4 +1,4 @@
-const allQuestions = ["m", "a", "k", "s"];
+const allQuestions = ["m", "a", "b", "c", "d", "e", "f", "k", "s"];
 
 const m = [{title: "M&M's", 
     question: "M&M's stands for...",
@@ -6,14 +6,42 @@ const m = [{title: "M&M's",
     correct: 1, image: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Plain-M%26Ms-Pile.jpg",
     letter: "m"}
 ]
-
 const a = [{title: "Ants", 
     question: "How many ants are estimated to inhabit the largest colony ever discovered?",
     answers: ["152,000", "23 million", "307 million"],
     correct: 2, image: "https://lmg-labmanager.s3.amazonaws.com/assets/articleNo/28511/aImg/51474/ant-neural-networks-compressed-m.webp",
     letter: "a"}
 ]
-
+const b = [{title: "Bikes", 
+    question: "How many bikes are reported stolen in Amsterdam annually?",
+    answers: ["10,000", "15,000", "25,000"],
+    correct: 0, image: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Ciclismo_en_Amsterdam.jpg",
+    letter: "b"}
+]
+const c = [{title: "Chili", 
+    question: "Who won the world Champion chili cook-offs in 2022? (Traditional Category)",
+    answers: ["Tonya Jester", "Richard Chauvin", "Kevin Foley"],
+    correct: 2, image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Bowl_of_chili.jpg/1920px-Bowl_of_chili.jpg",
+    letter: "c"}
+]
+const d = [{title: "Desert", 
+    question: "How many square km of land turn into desert per year?",
+    answers: ["55,000", "120,000", "135,000"],
+    correct: 1, image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Deserto_libico_-_Driving_-_panoramio.jpg/1920px-Deserto_libico_-_Driving_-_panoramio.jpg",
+    letter: "d"}
+]
+const e = [{title: "Eel", 
+    question: "How many volts can an electric eel generate? (most appliances use 120)",
+    answers: ["150", "600", "1100"],
+    correct: 1, image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Anguilla_japonica_1856.jpg/1920px-Anguilla_japonica_1856.jpg",
+    letter: "e"}
+]
+const f = [{title: "Forest", 
+    question: "Planting trees in an urban area can reduce air temperatures by how many degrees F?",
+    answers: ["8", "4", "6"],
+    correct: 0, image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Bz_crang_main_autumn.jpg/1920px-Bz_crang_main_autumn.jpg",
+    letter: "f"}
+]
 const k = [{title: "Alaska", 
     question: "The hottest temperature ever recorded in Alaska is: ",
     answers: ["95F", "100F", "110F"],
@@ -184,8 +212,11 @@ async function loadMain() {
     const toDos = document.querySelectorAll("button.card");
     i = 0;
     toDos.forEach(element => {
+        console.log("i = " + i);
         const letter = allQuestions[i];
+        console.log("letter = " + letter);
         if (completeds.includes(letter))  {
+            console.log("found letter in completeds")
             element.removeChild(element.firstElementChild);
             element.onclick = function() {};
         }
