@@ -45,7 +45,7 @@ class Game {
         };
         this.socket.onmessage = async (event) => {
           const msg = JSON.parse(await event.data.text());
-          this.displayMsg('player', msg.from, `scored ${msg.value.score}`);
+          this.displayMsg('player', msg.from, `scored a badge`);
         };
     
     }
@@ -86,8 +86,7 @@ class Game {
             }
     
             const event = {
-                from: 'test',
-                type: '10',
+                from: localStorage.getItem('userName'),
             };
     
             this.socket.send(JSON.stringify(event)); 
