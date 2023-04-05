@@ -1,8 +1,12 @@
 (async () => {
-  const url = 'http://numbersapi.com/random/math';
-  let response = await fetch(url);
-  response = await response.text();
+  try {
+    const url = 'https://numbersapi.com/random/math';
+    let response = await fetch(url);
+    response = await response.text();
     document.querySelector("#joke").textContent = response;
+  } catch {
+
+  }
     let authenticated = false;
     const userName = localStorage.getItem('userName');
     if (userName != null) {
@@ -20,7 +24,9 @@
             setDisplay('playControls', 'none');
           }
       }
-      
+    } else {
+      setDisplay('loginControls', 'block');
+      setDisplay('playControls', 'none');
     }
   
     
