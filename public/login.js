@@ -1,9 +1,9 @@
 (async () => {
   try {
-    const url = 'https://numbersapi.com/random/math';
+    const url = 'https://randombig.cat/roar.json';
     let response = await fetch(url);
-    response = await response.text();
-    document.querySelector("#joke").textContent = response;
+    response = await response.json();
+    document.querySelector("#joke").src = response.url;
   } catch {
 
   }
