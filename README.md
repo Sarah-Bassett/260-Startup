@@ -39,3 +39,9 @@ simon websocket: need peerProxy.js that creates new ws server, can upgrade stuff
           class Game has socket attribute, configures WebSocket at beginning, can this.socket.send(string), wrote onopen, onclose, and onmessage events
           
 React CLI: super helpful to set up everything right, get packages, etc
+          
+Startup service:
+          run on nodemon index.js 3000
+          console.log super helpful for debugging
+          need to set up endpoints to get DB to persist
+          ta help queue magically makes things work when I swear they weren't working
