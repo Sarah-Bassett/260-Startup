@@ -169,19 +169,10 @@ async function saveLetter(letter) {
 
 async function loadMain() {
     const matches = document.querySelectorAll("div.card");
-    var completeds;
-    try {
-        const response = await fetch('/api/score', {
-            method: 'GET',
-            headers: {'content-type':'application/json'},
-        });
-        completeds = await response.text();
-    } catch {
-        completeds = localStorage.getItem("completeds")
-    }
+    var completeds = localStorage.getItem("completeds")
     let i = 0;
 
-    /*matches.forEach(element => {
+    matches.forEach(element => {
         if (i < completeds.length) {
             const imageNode = document.createElement('img');
             const array = eval(completeds.charAt(i))
@@ -201,7 +192,7 @@ async function loadMain() {
         }
         i++;
         }
-    )*/
+    )
 }
 
 const game = new Game();

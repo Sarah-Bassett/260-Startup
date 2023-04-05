@@ -1,4 +1,8 @@
 (async () => {
+  const url = 'http://numbersapi.com/random/math';
+  let response = await fetch(url);
+  response = await response.text();
+    document.querySelector("#joke").textContent = response;
     let authenticated = false;
     const userName = localStorage.getItem('userName');
     if (userName != null) {
