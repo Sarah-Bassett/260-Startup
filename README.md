@@ -45,3 +45,9 @@ Startup service:
           console.log super helpful for debugging
           need to set up endpoints to get DB to persist
           ta help queue magically makes things work when I swear they weren't working
+          
+Simon react conversion:
+          npx create-react-app appName
+          different directories for service and src
+          npm install bootstrap react-bootstrap
+          
